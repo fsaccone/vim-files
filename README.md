@@ -1,5 +1,5 @@
 # Vim Files
-fsaccone's VIM configuration.
+fsaccone's Vim configuration.
 
 ## Installation
 Clone the repository in the `$HOME/.vim` directory or `$HOME/vimfiles` on Windows.
