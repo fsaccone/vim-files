@@ -11,4 +11,5 @@ Clone the repository in the `$HOME/.vim` directory or `$HOME/vimfiles` on Window
 * [undotree](https://github.com/mbbill/undotree)
 * [vim-airline](https://github.com/vim-airline/vim-airline)
 * [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
+* [comfortable-motion](https://github.com/yuttie/comfortable-motion.vim)
 

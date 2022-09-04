@@ -109,3 +109,7 @@ let g:airline_theme='papercolor'
 
 nnoremap <F5> :UndotreeToggle<CR>
 
+let g:comfortable_motion_no_default_key_mappings=1
+nnoremap <silent> <C-f> :call comfortable_motion#flick(40)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(-40)<CR>
+
