@@ -7,3 +7,5 @@ Clone the repository in the `$HOME/.vim` directory or `$HOME/vimfiles` on Window
 ## Dependencies
 * [PaperColor](https://github.com/NLKNguyen/papercolor-theme)
 * [EditorConfig](https://github.com/editorconfig/editorconfig-vim)
+* [Supertab](https://github.com/ervandew/supertab)
+
