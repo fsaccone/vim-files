@@ -45,11 +45,7 @@ else
 endif
 
 set background=dark
-try
-    colorscheme papercolor
-catch
-endtry
-set background=dark
+colorscheme papercolor
 
 set encoding=utf8
 
@@ -70,4 +66,50 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set autoindent
+
+"""""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
+let g:airline_mode_map={
+    \ 'niV'   : 'V REPLACE (NORMAL)',
+    \ 's'     : 'SELECT',
+    \ '^V'    : 'V-BLOCK',
+    \ 'niI'   : 'INSERT (NORMAL)',
+    \ 'ic'    : 'INSERT COMPL GENERIC',
+    \ 'R'     : 'REPLACE',
+    \ '^S'    : 'S-BLOCK',
+    \ 'no'    : 'OP PENDING',
+    \ 'V'     : 'V-LINE',
+    \ 'multi' : 'MULTI',
+    \ 'cv'    : 'VIM EX',
+    \ 'ce'    : 'EX',
+    \ '__'    : '------',
+    \ 'no^V'  : 'OP PENDING BLOCK',
+    \ '!'     : 'SHELL',
+    \ 'c'     : 'COMMAND',
+    \ 'ix'    : 'INSERT COMPL',
+    \ 'rm'    : 'MORE PROMPT',
+    \ 'i'     : 'INSERT',
+    \ 'Rv'    : 'V REPLACE',
+    \ 'Rx'    : 'REPLACE COMP',
+    \ 'n'     : 'NORMAL',
+    \ 'niR'   : 'REPLACE (NORMAL)',
+    \ 'r'     : 'PROMPT',
+    \ 'S'     : 'S-LINE',
+    \ 't'     : 'TERMINAL',
+    \ 'v'     : 'VISUAL',
+    \ 'r?'    : 'CONFIRM',
+    \ 'noV'   : 'OP PENDING LINE',
+    \ 'Rc'    : 'REPLACE COMP GENERIC',
+    \ 'nov'   : 'OP PENDING CHAR',
+    \ }
+let g:airline_theme='papercolor'
+
+nnoremap <F5> :UndotreeToggle<CR>
+
+let g:comfortable_motion_no_default_key_mappings=1
+nnoremap <silent> <C-f> :call comfortable_motion#flick(40)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(-40)<CR>
 
