@@ -3,7 +3,6 @@
 """""""""""""""""""""""""""""""""""""""""
 set nocompatible
 set backspace=indent,eol,start
-set whichwrap+=<,>,h,1
 set history=100
 set ruler
 set autoread
