@@ -107,3 +107,5 @@ let g:airline_mode_map={
     \ }
 let g:airline_theme='papercolor'
 
+nnoremap <F5> :UndotreeToggle<CR>
+
