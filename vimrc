@@ -25,7 +25,7 @@ syntax on
 set number
 set cursorline
 
-set hlsearch
+set nohlsearch
 set showmatch
 set matchtime=2
 set foldcolumn=1
@@ -55,8 +55,18 @@ set encoding=utf8
 set nobackup
 set nowritebackup
 set noswapfile
+set noautochdir
 
 set fileformats=unix,dos,mac
+
+" Disallows editing directories
+for file in argv()
+    if isdirectory(file)
+        echon 'vimrc: Unable to open `' . file . '`. Editing directories is forbidden.'
+        quit
+        break
+    endif
+endfor
 
 """""""""""""""""""""""""""""""""""""""""
 " Format
@@ -106,6 +116,10 @@ let g:airline_mode_map={
     \ 'nov'   : 'OP PENDING CHAR',
     \ }
 let g:airline_theme='papercolor'
+
+let g:undotree_WindowLayout=3
+let g:undotree_HighlightChangedText=0
+let g:undotree_DiffAutoOpen=0
 
 nnoremap <F5> :UndotreeToggle<CR>
 
