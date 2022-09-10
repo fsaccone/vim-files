@@ -8,8 +8,9 @@ Clone the repository in the `$HOME/.vim` directory or `$HOME/vimfiles` on Window
 * [PaperColor](https://github.com/NLKNguyen/papercolor-theme)
 * [EditorConfig](https://github.com/editorconfig/editorconfig-vim)
 * [SuperTab](https://github.com/ervandew/supertab)
-* [undotree](https://github.com/mbbill/undotree)
-* [vim-airline](https://github.com/vim-airline/vim-airline)
-* [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
-* [comfortable-motion](https://github.com/yuttie/comfortable-motion.vim)
+* [UndoTree](https://github.com/mbbill/undotree)
+* [Airline](https://github.com/vim-airline/vim-airline)
+* [Airline Themes](https://github.com/vim-airline/vim-airline-themes)
+* [NERDTree](https://github.com/preservim/nerdtree)
+* [Comfortable Motion](https://github.com/yuttie/comfortable-motion.vim)
 
