@@ -11,6 +11,9 @@ set ignorecase
 set smartcase
 set magic
 
+set foldcolumn=1
+set foldmethod=syntax
+
 set belloff=all
 set noerrorbells
 set novisualbell
@@ -37,7 +40,6 @@ set cursorline
 set nohlsearch
 set showmatch
 set matchtime=2
-set foldcolumn=0
 set nowrap
 
 let $LANG = 'en'
@@ -86,6 +88,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set autoindent
+
+set list
+set listchars=space:·
 
 """""""""""""""""""""""""""""""""""""""""
 " Plugins

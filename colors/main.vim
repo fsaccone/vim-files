@@ -11,10 +11,12 @@ let s:bg2       = { 'gui': '#303030', 'cterm': '236' }
 let s:fg        = { 'gui': '#D0D0D0', 'cterm': '252' }
 let s:primary   = { 'gui': '#D78700', 'cterm': '172' }
 let s:secondary = { 'gui': '#D75F00', 'cterm': '166' }
-let s:muted     = { 'gui': '#808080', 'cterm': '244' }
-let s:string    = { 'gui': '#008700', 'cterm': '28' }
+let s:muted  =    { 'gui': '#808080', 'cterm': '244' }
+let s:ui_muted  = { 'gui': '#4E4E4E', 'cterm': '239' }
+let s:ui_hl     = { 'gui': '#FFAF00', 'cterm': '214' }
+let s:string    = { 'gui': '#AFD700', 'cterm': '148' }
 let s:error     = { 'gui': '#D70000', 'cterm': '160' }
-let s:special   = { 'gui': '#D787AF', 'cterm': '175' }
+let s:special   = { 'gui': '#FFAF5F', 'cterm': '215' }
 let s:none      = { 'gui': 'NONE', 'cterm': 'NONE' }
 
 let s:bold      = 'bold'
@@ -46,47 +48,47 @@ endfunction
 
 call s:AddColor('Normal', s:fg, s:bg1, [])
 
-call s:AddColor('MatchParen', s:primary, s:bg1, [s:bold])
+call s:AddColor('MatchParen', s:ui_hl, s:bg1, [s:bold])
 
 call s:AddColor('Conceal', s:special, s:bg1, [])
 call s:AddColor('ColorColumn', s:none, s:none, [])
 call s:AddColor('CursorLine', s:none, s:none, [])
-call s:AddColor('CursorLineNr', s:primary, s:none, [s:bold])
+call s:AddColor('CursorLineNr', s:ui_hl, s:none, [s:bold])
 
 call s:AddColor('TabLine', s:fg, s:bg2, [])
-call s:AddColor('TabLineSel', s:bg2, s:primary, [s:bold])
+call s:AddColor('TabLineSel', s:bg2, s:ui_hl, [s:bold])
 hi! link TabLineFill TabLine
 
-call s:AddColor('NonText', s:muted, s:none, [])
-call s:AddColor('SpecialKey', s:muted, s:none, [])
+call s:AddColor('NonText', s:ui_muted, s:none, [])
+call s:AddColor('SpecialKey', s:ui_muted, s:none, [])
 
 call s:AddColor('Visual', s:none, s:bg2, [])
 call s:AddColor('Search', s:none, s:bg2, [])
 call s:AddColor('IncSearch', s:none, s:bg2, [])
 
 call s:AddColor('QuickFixLine', s:fg, s:bg2, [])
-call s:AddColor('qfFileName', s:primary, s:bg2, [])
-call s:AddColor('qfLineNr', s:muted, s:bg2, [])
+call s:AddColor('qfFileName', s:ui_hl, s:bg2, [])
+call s:AddColor('qfLineNr', s:ui_muted, s:bg2, [])
 
-call s:AddColor('Underlined', s:special, s:none, [s:underline])
+call s:AddColor('Underlined', s:none, s:none, [s:underline])
 
 call s:AddColor('StatusLine', s:fg, s:bg2, [])
 call s:AddColor('StatusLineNC', s:fg, s:bg2, [s:inverse, s:italic])
 
 call s:AddColor('VertSplit', s:bg1, s:bg2, [])
-call s:AddColor('WildMenu', s:primary, s:bg2, [s:bold])
+call s:AddColor('WildMenu', s:ui_hl, s:bg2, [s:bold])
 
-call s:AddColor('ErrorMsg', s:fg, s:primary, [s:bold])
-call s:AddColor('MoreMsg', s:secondary, s:bg1, [])
+call s:AddColor('ErrorMsg', s:bg1, s:ui_hl, [s:bold])
+call s:AddColor('MoreMsg', s:ui_hl, s:bg1, [])
 call s:AddColor('ModeMsg', s:fg, s:bg1, [])
 hi! link Question MoreMsg
 hi! link WarningMsg ErrorMsg
 
-call s:AddColor('LineNr', s:muted, s:bg1, [])
+call s:AddColor('LineNr', s:ui_muted, s:bg1, [])
 call s:AddColor('SignColumn', s:none, s:bg1, [])
 
-call s:AddColor('Folded', s:muted, s:bg1, [])
-call s:AddColor('FoldColumn', s:muted, s:bg1, [])
+call s:AddColor('Folded', s:ui_muted, s:bg1, [])
+call s:AddColor('FoldColumn', s:ui_hl, s:bg1, [])
 
 call s:AddColor('Cursor', s:none, s:none, [s:inverse])
 hi! link vCursor Cursor
