@@ -11,6 +11,15 @@ set ignorecase
 set smartcase
 set magic
 
+set belloff=all
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+if has('gui_macvim')
+    autocmd GUIEnter * set vb t_vb=t_vb
+endif
+
 """""""""""""""""""""""""""""""""""""""""
 " Performance
 """""""""""""""""""""""""""""""""""""""""
@@ -28,10 +37,10 @@ set cursorline
 set nohlsearch
 set showmatch
 set matchtime=2
-set foldcolumn=1
+set foldcolumn=0
 set nowrap
 
-let $LANG='en'
+let $LANG = 'en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -45,7 +54,8 @@ else
 endif
 
 set background=dark
-colorscheme papercolor
+colorscheme main
+set t_Co=256
 
 set encoding=utf8
 
@@ -80,55 +90,19 @@ set autoindent
 """""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""
-let g:airline_left_sep=' '
-let g:airline_right_sep=' '
-let g:airline_mode_map={
-    \ 'niV'   : 'V REPLACE (NORMAL)',
-    \ 's'     : 'SELECT',
-    \ '^V'    : 'V-BLOCK',
-    \ 'niI'   : 'INSERT (NORMAL)',
-    \ 'ic'    : 'INSERT COMPL GENERIC',
-    \ 'R'     : 'REPLACE',
-    \ '^S'    : 'S-BLOCK',
-    \ 'no'    : 'OP PENDING',
-    \ 'V'     : 'V-LINE',
-    \ 'multi' : 'MULTI',
-    \ 'cv'    : 'VIM EX',
-    \ 'ce'    : 'EX',
-    \ '__'    : '------',
-    \ 'no^V'  : 'OP PENDING BLOCK',
-    \ '!'     : 'SHELL',
-    \ 'c'     : 'COMMAND',
-    \ 'ix'    : 'INSERT COMPL',
-    \ 'rm'    : 'MORE PROMPT',
-    \ 'i'     : 'INSERT',
-    \ 'Rv'    : 'V REPLACE',
-    \ 'Rx'    : 'REPLACE COMP',
-    \ 'n'     : 'NORMAL',
-    \ 'niR'   : 'REPLACE (NORMAL)',
-    \ 'r'     : 'PROMPT',
-    \ 'S'     : 'S-LINE',
-    \ 't'     : 'TERMINAL',
-    \ 'v'     : 'VISUAL',
-    \ 'r?'    : 'CONFIRM',
-    \ 'noV'   : 'OP PENDING LINE',
-    \ 'Rc'    : 'REPLACE COMP GENERIC',
-    \ 'nov'   : 'OP PENDING CHAR',
-    \ }
-let g:airline_theme='papercolor'
-
-let g:undotree_WindowLayout=3
-let g:undotree_HighlightChangedText=0
-let g:undotree_DiffAutoOpen=0
+let g:undotree_WindowLayout         = 3
+let g:undotree_HighlightChangedText = 0
+let g:undotree_DiffAutoOpen         = 0
 
 nnoremap <F5> :UndotreeToggle<CR>
 
 nnoremap <C-t> :NERDTreeFocus<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
 autocmd VimEnter * NERDTree | wincmd p
 
-let g:comfortable_motion_no_default_key_mappings=1
-nnoremap <silent> <C-f> :call comfortable_motion#flick(40)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(-40)<CR>
+let g:comfortable_motion_no_default_key_mappings = 1
+nnoremap <C-f> :call comfortable_motion#flick(40)<CR>
+nnoremap <C-b> :call comfortable_motion#flick(-40)<CR>
+nnoremap <C-e> :call comfortable_motion#flick(40)<CR>
+nnoremap <C-y> :call comfortable_motion#flick(-40)<CR>
 
