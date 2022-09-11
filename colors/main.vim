@@ -8,10 +8,11 @@ let g:colors_name = 'main'
 
 let s:bg1       = { 'gui': '#262626', 'cterm': '235' }
 let s:bg2       = { 'gui': '#303030', 'cterm': '236' }
+let s:selected  = { 'gui': '#3A3A3A', 'cterm': '237' }
 let s:fg        = { 'gui': '#D0D0D0', 'cterm': '252' }
 let s:primary   = { 'gui': '#D78700', 'cterm': '172' }
 let s:secondary = { 'gui': '#D75F00', 'cterm': '166' }
-let s:muted  =    { 'gui': '#808080', 'cterm': '244' }
+let s:muted     = { 'gui': '#808080', 'cterm': '244' }
 let s:ui_muted  = { 'gui': '#4E4E4E', 'cterm': '239' }
 let s:ui_hl     = { 'gui': '#FFAF00', 'cterm': '214' }
 let s:string    = { 'gui': '#AFD700', 'cterm': '148' }
@@ -52,19 +53,19 @@ call s:AddColor('MatchParen', s:ui_hl, s:bg1, [s:bold])
 
 call s:AddColor('Conceal', s:special, s:bg1, [])
 call s:AddColor('ColorColumn', s:none, s:none, [])
-call s:AddColor('CursorLine', s:none, s:none, [])
-call s:AddColor('CursorLineNr', s:ui_hl, s:none, [s:bold])
+call s:AddColor('CursorLine', s:none, s:bg2, [])
+call s:AddColor('CursorLineNr', s:ui_hl, s:bg2, [s:bold])
 
 call s:AddColor('TabLine', s:fg, s:bg2, [])
 call s:AddColor('TabLineSel', s:bg2, s:ui_hl, [s:bold])
 hi! link TabLineFill TabLine
 
-call s:AddColor('NonText', s:ui_muted, s:none, [])
+call s:AddColor('NonText', s:bg1, s:bg1, [])
 call s:AddColor('SpecialKey', s:ui_muted, s:none, [])
 
-call s:AddColor('Visual', s:none, s:bg2, [])
-call s:AddColor('Search', s:none, s:bg2, [])
-call s:AddColor('IncSearch', s:none, s:bg2, [])
+call s:AddColor('Visual', s:none, s:selected, [])
+call s:AddColor('Search', s:none, s:selected, [])
+call s:AddColor('IncSearch', s:none, s:selected, [])
 
 call s:AddColor('QuickFixLine', s:fg, s:bg2, [])
 call s:AddColor('qfFileName', s:ui_hl, s:bg2, [])
@@ -179,4 +180,10 @@ hi! link rubyDefine Statement
 hi! link rubyBlockParameter Normal
 hi! link rubyInstanceVariable Normal
 hi! link rubyFunction Function
+
+"""""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+call s:AddColor('Directory', s:ui_hl, s:none, [s:italic, s:bold])
 

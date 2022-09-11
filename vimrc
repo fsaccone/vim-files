@@ -98,11 +98,18 @@ set listchars=space:·
 let g:undotree_WindowLayout         = 3
 let g:undotree_HighlightChangedText = 0
 let g:undotree_DiffAutoOpen         = 0
-
 nnoremap <F5> :UndotreeToggle<CR>
 
+let g:NERDTreeStatusline                = ''
+let g:NERDTreeWinPos                    = 'right'
+let g:NERDTreeWinSize                   = 50
+let g:NERDTreeMinimalUI                 = 1
+let g:NERDTreeMinimalMenu               = 1
+let g:NERDTreeCascadeSingleChildDir     = 0
+let g:NERDTreeCascadeOpenSingleChildDir = 0 
+let g:NERDTreeDirArrowExpandable        = '+'
+let g:NERDTreeDirArrowCollapsible       = '-'
 nnoremap <C-t> :NERDTreeFocus<CR>
-
 autocmd VimEnter * NERDTree | wincmd p
 
 let g:comfortable_motion_no_default_key_mappings = 1
