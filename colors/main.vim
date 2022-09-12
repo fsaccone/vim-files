@@ -56,6 +56,11 @@ call s:AddColor('ColorColumn', s:none, s:none, [])
 call s:AddColor('CursorLine', s:none, s:bg2, [])
 call s:AddColor('CursorLineNr', s:ui_hl, s:bg2, [s:bold])
 
+call s:AddColor('Pmenu', s:fg, s:ui_muted, [])
+call s:AddColor('PMenuSel', s:ui_hl, s:bg2, [s:bold])
+call s:AddColor('PmenuSbar', s:ui_muted, s:ui_muted, [])
+call s:AddColor('PmenuThumb', s:ui_hl, s:ui_hl, [])
+
 call s:AddColor('TabLine', s:fg, s:bg2, [])
 call s:AddColor('TabLineSel', s:bg2, s:ui_hl, [s:bold])
 hi! link TabLineFill TabLine
