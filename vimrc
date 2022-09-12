@@ -3,7 +3,6 @@
 """""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
-Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/yuttie/comfortable-motion.vim'
 Plug 'https://github.com/editorconfig/editorconfig-vim'
 Plug 'https://github.com/preservim/nerdtree'
@@ -32,6 +31,7 @@ let g:NERDTreeDirArrowExpandable        = '+'
 let g:NERDTreeDirArrowCollapsible       = '-'
 nnoremap <C-t> :NERDTreeFocus<CR>
 autocmd VimEnter * NERDTree | wincmd p
+autocmd WinEnter * call NERDTreeQuit()
 
 let g:undotree_WindowLayout         = 3
 let g:undotree_HighlightChangedText = 0
@@ -101,6 +101,15 @@ set t_Co=256
 
 set encoding=utf8
 
+set statusline=
+set statusline+=%#StatusLineMode#
+set statusline+=\ %{GetModeName()}
+set statusline+=\ %#StatusLineFile#
+set statusline+=\ %f
+set statusline+=%=
+set statusline+=%#StatusLineSave#
+set statusline+=%m
+
 """""""""""""""""""""""""""""""""""""""""
 " Files
 """""""""""""""""""""""""""""""""""""""""
@@ -131,4 +140,73 @@ set autoindent
 
 set list
 set listchars=space:·
+
+"""""""""""""""""""""""""""""""""""""""""
+" Utils
+"""""""""""""""""""""""""""""""""""""""""
+function! GetModeName()
+    let l:cases = {
+       \ 'n'       : 'NORMAL',
+       \ 'no'      : 'OPERATOR PENDING',
+       \ 'nov'     : 'OPERATOR PENDING CHAR',
+       \ 'noV'     : 'OPERATOR PENDING LINE',
+       \ 'noCTRL-V': 'OPERATOR PENDING BLOCK',
+       \ 'niI'     : 'INSERT (NORMAL)',
+       \ 'niR'     : 'REPLACE (NORMAL)',
+       \ 'niV'     : 'VIRTUAL REPLACE (NORMAL)',
+       \ 'nt'      : 'TERMINAL (NORMAL)',
+       \ 'v'       : 'VISUAL',
+       \ 'vs'      : 'VISUAL (SELECT)',
+       \ 'V'       : 'VISUAL LINE',
+       \ 'Vs'      : 'VISUAL LINE (SELECT)',
+       \ 'CTRL-V'  : 'VISUAL BLOCK',
+       \ 'CTRL-Vs' : 'VISUAL BLOCK (SELECT)',
+       \ 's'       : 'SELECT',
+       \ 'S'       : 'SELECT LINE',
+       \ 'CTRL-S'  : 'SELECT BLOCK',
+       \ 'i'       : 'INSERT',
+       \ 'ic'      : 'INSERT COMPL GENERIC',
+       \ 'ix'      : 'INSERT COMPL',
+       \ 'R'       : 'REPLACE',
+       \ 'Rc'      : 'REPLACE COMPL GENERIC',
+       \ 'Rx'      : 'REPLACE COMPL',
+       \ 'Rv'      : 'VIRTUAL REPLACE',
+       \ 'Rvc'     : 'VIRTUAL REPLACE COMPL GENERIC',
+       \ 'Rvx'     : 'VIRTUAL REPLACE COMPL',
+       \ 'c'       : 'COMMAND',
+       \ 'cv'      : 'VIM EX',
+       \ 'ce'      : 'EX',
+       \ 'r'       : 'PROMPT',
+       \ 'rm'      : 'MORE PROMPT',
+       \ 'r?'      : 'CONFIRM',
+       \ '!'       : 'SHELL',
+       \ 't'       : 'TERMINAL',
+       \ }
+    let l:mode = mode()
+
+    return get(l:cases, l:mode, toupper(l:mode))
+endfunction
+
+function! NERDTreeQuit()  " https://github.com/preservim/nerdtree/issues/21
+    redir => buffersoutput
+    silent buffers
+    redir END
+    "                     1BufNo  2Mods.     3File           4LineNo
+    let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
+    let windowfound = 0
+
+    for bline in split(buffersoutput, "\n")
+        let m = matchlist(bline, pattern)
+
+        if (len(m) > 0)
+            if (m[2] =~ '..a..')
+                let windowfound = 1
+            endif
+        endif
+    endfor
+
+    if (!windowfound)
+        quitall
+    endif
+endfunction
 
