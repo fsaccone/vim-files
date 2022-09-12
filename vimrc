@@ -1,4 +1,44 @@
 """""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""
+call plug#begin()
+
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/yuttie/comfortable-motion.vim'
+Plug 'https://github.com/editorconfig/editorconfig-vim'
+Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/ervandew/supertab'
+Plug 'https://github.com/mbbill/undotree'
+
+call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""
+" Plugin options
+"""""""""""""""""""""""""""""""""""""""""
+let g:comfortable_motion_no_default_key_mappings = 1
+nnoremap <C-f> :call comfortable_motion#flick(40)<CR>
+nnoremap <C-b> :call comfortable_motion#flick(-40)<CR>
+nnoremap <C-e> :call comfortable_motion#flick(40)<CR>
+nnoremap <C-y> :call comfortable_motion#flick(-40)<CR>
+
+let g:NERDTreeStatusline                = ''
+let g:NERDTreeWinPos                    = 'right'
+let g:NERDTreeWinSize                   = 50
+let g:NERDTreeMinimalUI                 = 1
+let g:NERDTreeMinimalMenu               = 1
+let g:NERDTreeCascadeSingleChildDir     = 0
+let g:NERDTreeCascadeOpenSingleChildDir = 0 
+let g:NERDTreeDirArrowExpandable        = '+'
+let g:NERDTreeDirArrowCollapsible       = '-'
+nnoremap <C-t> :NERDTreeFocus<CR>
+autocmd VimEnter * NERDTree | wincmd p
+
+let g:undotree_WindowLayout         = 3
+let g:undotree_HighlightChangedText = 0
+let g:undotree_DiffAutoOpen         = 0
+nnoremap <F5> :UndotreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""
 set nocompatible
@@ -12,7 +52,7 @@ set smartcase
 set magic
 
 set foldcolumn=1
-set foldmethod=syntax
+set foldmethod=manual
 
 set belloff=all
 set noerrorbells
@@ -91,30 +131,4 @@ set autoindent
 
 set list
 set listchars=space:·
-
-"""""""""""""""""""""""""""""""""""""""""
-" Plugins
-"""""""""""""""""""""""""""""""""""""""""
-let g:undotree_WindowLayout         = 3
-let g:undotree_HighlightChangedText = 0
-let g:undotree_DiffAutoOpen         = 0
-nnoremap <F5> :UndotreeToggle<CR>
-
-let g:NERDTreeStatusline                = ''
-let g:NERDTreeWinPos                    = 'right'
-let g:NERDTreeWinSize                   = 50
-let g:NERDTreeMinimalUI                 = 1
-let g:NERDTreeMinimalMenu               = 1
-let g:NERDTreeCascadeSingleChildDir     = 0
-let g:NERDTreeCascadeOpenSingleChildDir = 0 
-let g:NERDTreeDirArrowExpandable        = '+'
-let g:NERDTreeDirArrowCollapsible       = '-'
-nnoremap <C-t> :NERDTreeFocus<CR>
-autocmd VimEnter * NERDTree | wincmd p
-
-let g:comfortable_motion_no_default_key_mappings = 1
-nnoremap <C-f> :call comfortable_motion#flick(40)<CR>
-nnoremap <C-b> :call comfortable_motion#flick(-40)<CR>
-nnoremap <C-e> :call comfortable_motion#flick(40)<CR>
-nnoremap <C-y> :call comfortable_motion#flick(-40)<CR>
 
