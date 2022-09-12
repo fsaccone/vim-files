@@ -6,7 +6,6 @@ call plug#begin()
 Plug 'https://github.com/yuttie/comfortable-motion.vim'
 Plug 'https://github.com/editorconfig/editorconfig-vim'
 Plug 'https://github.com/preservim/nerdtree'
-Plug 'https://github.com/ervandew/supertab'
 Plug 'https://github.com/mbbill/undotree'
 
 call plug#end()
@@ -26,7 +25,7 @@ let g:NERDTreeWinSize                   = 50
 let g:NERDTreeMinimalUI                 = 1
 let g:NERDTreeMinimalMenu               = 1
 let g:NERDTreeCascadeSingleChildDir     = 0
-let g:NERDTreeCascadeOpenSingleChildDir = 0 
+let g:NERDTreeCascadeOpenSingleChildDir = 0
 let g:NERDTreeDirArrowExpandable        = '+'
 let g:NERDTreeDirArrowCollapsible       = '-'
 nnoremap <C-t> :NERDTreeFocus<CR>
@@ -53,6 +52,7 @@ set magic
 
 set foldcolumn=1
 set foldmethod=manual
+set fillchars+=foldopen:-,foldclose:+,foldsep:1
 
 set belloff=all
 set noerrorbells
