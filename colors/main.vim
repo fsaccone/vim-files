@@ -73,8 +73,11 @@ call s:AddColor('qfLineNr', s:ui_muted, s:bg2, [])
 
 call s:AddColor('Underlined', s:none, s:none, [s:underline])
 
-call s:AddColor('StatusLine', s:fg, s:bg2, [])
-call s:AddColor('StatusLineNC', s:fg, s:bg2, [s:inverse, s:italic])
+call s:AddColor('StatusLine', s:fg, s:ui_muted, [])
+call s:AddColor('StatusLineNC', s:ui_muted, s:ui_muted, [])
+call s:AddColor('StatusLineMode', s:bg2, s:ui_hl, [s:bold])
+call s:AddColor('StatusLineFile', s:none, s:ui_muted, [s:italic])
+call s:AddColor('StatusLineSave', s:ui_hl, s:ui_muted, [])
 
 call s:AddColor('VertSplit', s:bg1, s:bg2, [])
 call s:AddColor('WildMenu', s:ui_hl, s:bg2, [s:bold])
