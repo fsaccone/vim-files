@@ -54,7 +54,15 @@ call s:AddColor('MatchParen', s:ui_hl, s:bg1, [s:bold])
 call s:AddColor('Conceal', s:special, s:bg1, [])
 call s:AddColor('ColorColumn', s:none, s:none, [])
 call s:AddColor('CursorLine', s:none, s:bg2, [])
+hi! link CursorColumn CursorLine
 call s:AddColor('CursorLineNr', s:ui_hl, s:bg2, [s:bold])
+hi! link CursorLineSign CursorLineNr
+hi! link CursorLineFold CursorLineNr
+
+call s:AddColor('LineNr', s:ui_muted, s:bg2, [])
+hi! link SignColumn LineNr
+hi! link FoldColumn LineNr
+call s:AddColor('Folded', s:ui_muted, s:bg2, [])
 
 call s:AddColor('Pmenu', s:fg, s:ui_muted, [])
 call s:AddColor('PMenuSel', s:ui_hl, s:bg2, [s:bold])
@@ -92,12 +100,6 @@ call s:AddColor('MoreMsg', s:ui_hl, s:bg1, [])
 call s:AddColor('ModeMsg', s:fg, s:bg1, [])
 hi! link Question MoreMsg
 hi! link WarningMsg ErrorMsg
-
-call s:AddColor('LineNr', s:ui_muted, s:bg2, [])
-call s:AddColor('SignColumn', s:none, s:bg2, [])
-
-call s:AddColor('Folded', s:ui_muted, s:bg2, [])
-call s:AddColor('FoldColumn', s:ui_hl, s:bg2, [])
 
 call s:AddColor('Cursor', s:none, s:none, [s:inverse])
 hi! link vCursor Cursor

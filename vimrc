@@ -19,6 +19,7 @@ nnoremap <C-b> :call comfortable_motion#flick(-40)<CR>
 nnoremap <C-e> :call comfortable_motion#flick(40)<CR>
 nnoremap <C-y> :call comfortable_motion#flick(-40)<CR>
 
+let g:NERDTreeShowHidden                = 1
 let g:NERDTreeStatusline                = ''
 let g:NERDTreeWinPos                    = 'right'
 let g:NERDTreeWinSize                   = 50
@@ -99,8 +100,6 @@ set background=dark
 colorscheme main
 set t_Co=256
 
-set encoding=utf8
-
 set statusline=
 set statusline+=%#StatusLineMode#
 set statusline+=\ %{GetModeName()}
@@ -109,6 +108,19 @@ set statusline+=\ %f
 set statusline+=%=
 set statusline+=%#StatusLineSave#
 set statusline+=%m
+
+language en_US.utf-8
+set encoding=utf8
+
+"""""""""""""""""""""""""""""""""""""""""
+" GUI
+"""""""""""""""""""""""""""""""""""""""""
+if has('gui_running')
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=r
+    set guioptions-=L
+endif
 
 """""""""""""""""""""""""""""""""""""""""
 " Files
