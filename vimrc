@@ -6,7 +6,6 @@ call plug#begin()
 Plug 'https://github.com/yuttie/comfortable-motion.vim'
 Plug 'https://github.com/editorconfig/editorconfig-vim'
 Plug 'https://github.com/preservim/nerdtree'
-Plug 'https://github.com/ervandew/supertab'
 Plug 'https://github.com/mbbill/undotree'
 
 call plug#end()
@@ -20,13 +19,14 @@ nnoremap <C-b> :call comfortable_motion#flick(-40)<CR>
 nnoremap <C-e> :call comfortable_motion#flick(40)<CR>
 nnoremap <C-y> :call comfortable_motion#flick(-40)<CR>
 
+let g:NERDTreeShowHidden                = 1
 let g:NERDTreeStatusline                = ''
 let g:NERDTreeWinPos                    = 'right'
 let g:NERDTreeWinSize                   = 50
 let g:NERDTreeMinimalUI                 = 1
 let g:NERDTreeMinimalMenu               = 1
 let g:NERDTreeCascadeSingleChildDir     = 0
-let g:NERDTreeCascadeOpenSingleChildDir = 0 
+let g:NERDTreeCascadeOpenSingleChildDir = 0
 let g:NERDTreeDirArrowExpandable        = '+'
 let g:NERDTreeDirArrowCollapsible       = '-'
 nnoremap <C-t> :NERDTreeFocus<CR>
@@ -53,6 +53,7 @@ set magic
 
 set foldcolumn=1
 set foldmethod=manual
+set fillchars+=foldopen:-,foldclose:+,foldsep:1
 
 set belloff=all
 set noerrorbells
@@ -99,8 +100,6 @@ set background=dark
 colorscheme main
 set t_Co=256
 
-set encoding=utf8
-
 set statusline=
 set statusline+=%#StatusLineMode#
 set statusline+=\ %{GetModeName()}
@@ -109,6 +108,19 @@ set statusline+=\ %f
 set statusline+=%=
 set statusline+=%#StatusLineSave#
 set statusline+=%m
+
+language en_US.utf-8
+set encoding=utf8
+
+"""""""""""""""""""""""""""""""""""""""""
+" GUI
+"""""""""""""""""""""""""""""""""""""""""
+if has('gui_running')
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=r
+    set guioptions-=L
+endif
 
 """""""""""""""""""""""""""""""""""""""""
 " Files
