@@ -49,7 +49,7 @@ endfunction
 
 call s:AddColor('Normal', s:fg, s:bg1, [])
 
-call s:AddColor('MatchParen', s:ui_hl, s:bg1, [s:bold])
+call s:AddColor('MatchParen', s:ui_hl, s:ui_muted, [s:bold])
 
 call s:AddColor('Conceal', s:special, s:bg1, [])
 call s:AddColor('ColorColumn', s:none, s:none, [])
