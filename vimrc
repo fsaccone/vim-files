@@ -3,17 +3,31 @@
 """""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
+Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/yuttie/comfortable-motion.vim'
 Plug 'https://github.com/editorconfig/editorconfig-vim'
 Plug 'https://github.com/preservim/nerdtree'
 Plug 'https://github.com/mbbill/undotree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""
 " Plugin options
 """""""""""""""""""""""""""""""""""""""""
+inoremap <silent><expr> <TAB>
+    \ coc#pum#visible()
+        \ ? coc#pum#next(1)
+        \ : CheckBackspace()
+            \ ? '<TAB>'
+            \ : coc#refresh()
+inoremap <silent><expr> <S-TAB>
+    \ coc#pum#visible()
+        \ ? coc#pum#confirm()
+        \ : '\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>'
+inoremap <silent><expr> <c-space> coc#refresh()
+autocmd CursorHold * silent call CocActionAsync('highlight')
+command! -nargs=0 Format :call CocActionAsync('format')
+
 let g:comfortable_motion_no_default_key_mappings = 1
 nnoremap <silent> <C-f> :call comfortable_motion#flick(40)<CR>
 nnoremap <silent> <C-b> :call comfortable_motion#flick(-40)<CR>
@@ -38,20 +52,6 @@ let g:undotree_WindowLayout         = 3
 let g:undotree_HighlightChangedText = 0
 let g:undotree_DiffAutoOpen         = 0
 nnoremap <silent> <F5> :UndotreeToggle<CR>
-
-inoremap <silent><expr> <TAB>
-    \ coc#pum#visible()
-        \ ? coc#pum#next(1)
-        \ : CheckBackspace()
-            \ ? '\<TAB>'
-            \ : coc#refresh()
-inoremap <silent><expr> <S-TAB>
-    \ coc#pum#visible()
-        \ ? coc#pum#confirm()
-        \ : '\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>'
-inoremap <silent><expr> <c-space> coc#refresh()
-autocmd CursorHold * silent call CocActionAsync('highlight')
-command! -nargs=0 Format :call CocActionAsync('format')
 
 """""""""""""""""""""""""""""""""""""""""
 " General
@@ -93,8 +93,10 @@ set updatetime=300
 """""""""""""""""""""""""""""""""""""""""
 filetype indent plugin on
 syntax on
-set number
 set cursorline
+
+set number
+map <C-l> :call g:ToggleNumberMode()<CR>
 
 set nohlsearch
 set showmatch
@@ -243,5 +245,13 @@ endfunction
 function! CheckBackspace() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! g:ToggleNumberMode()
+    if (&relativenumber == 1)
+        set relativenumber!
+    else
+        set relativenumber
+    endif
 endfunction
 
